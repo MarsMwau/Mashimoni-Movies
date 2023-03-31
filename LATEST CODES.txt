@@ -1,0 +1,22 @@
+#logo
+{
+	padding-left:60px;
+	position:relative;
+	right:5%;
+	top:10%;
+}
+#quote
+{
+	font-size:30px;
+	font-family:"Segoe UI Symbol";
+	font:"Segoe UI Symbol";
+	text-align:center;
+	width:200px;
+	position:absolute;
+	left:50%;
+	top:10%;
+	color:red;
+	font-style:italic;
+	padding: 5% 0%;
+	font-weight:100;
+}

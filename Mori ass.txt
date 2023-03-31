@@ -1,0 +1,135 @@
+Methods of iterating an object in JS
+If you have an array that is considered to be an object in javascript,
+you can’t loop through the array using map(), forEach(), or a for..of loop you'll get errors.
+
+- Using for..in loop
+-One problem in using the for...in method is that it loops through the properties in the prototype chain as well.
+Since the objects in JavaScript can inherit properties from their prototypes,
+the for...in statement will loop through those properties as well.
+To avoid this problem, you have to explicitly check if the property belongs to the object by using the hasOwnProperty() method:
+const user = {
+
+    name: 'John Doe',
+
+    email: 'john.doe@example.com',
+
+    age: 25,
+
+    dob: '08/02/1989',
+
+    active: true
+};
+
+// iterate over the user object
+
+for (const key in user) {
+
+    console.log(`${key}: ${user[key]}`);
+}
+
+// name: John Doe
+
+// email: john.doe@example.com
+
+// age: 25
+
+// dob: 08/02/1989
+
+// active: true
+
+- Objects.keys() method
+It takes the object we want to loop over as an argument and returns an array containing all property names
+gives us the advantage of applying any array looping method to iterate through the array and retrieve the value of each property 
+const courses = {
+    java: 10,
+
+    javascript: 55,
+
+    nodejs: 5,
+
+    php: 15
+};
+
+// convert object to key's array
+
+const keys = Object.keys(courses);
+
+// print all keys
+
+console.log(keys);
+
+// [ 'java', 'javascript', 'nodejs', 'php' ]
+
+// iterate over object
+
+keys.forEach((key, index) => {
+    console.log(`${key}: ${courses[key]}`);
+});
+
+// java: 10
+
+// javascript: 55
+
+// nodejs: 5
+
+// php: 15
+
+- object.value() method
+It returns the values of all properties in the object as an array.
+You can then loop through the values array by using any of the array looping methods.
+const animals = {
+    tiger: 1,
+
+    cat: 2,
+
+    monkey: 3,
+
+    elephant: 4
+};
+
+// iterate over object values
+
+Object.values(animals).forEach(val => console.log(val));
+
+// 1
+// 2
+// 3
+// 4
+
+- object.entries() method
+Object.entries() outputs an array of arrays, with each inner array having two elements.
+The first element being the property and the second element is the value.
+This returns an array of arrays, with each inner array having the [key, value].
+You can use any array method to loop through:
+onst animals = {
+    tiger: 1,
+
+    cat: 2,
+
+    monkey: 3,
+
+    elephant: 4
+};
+
+const entries = Object.entries(animals);
+console.log(entries);
+
+// [ [ 'tiger', 1 ],
+
+//   [ 'cat', 2 ],
+
+//   [ 'monkey', 3 ],
+
+//   [ 'elephant', 4 ] ]
+To loop over the array returned by Object.entries(), you can either use the for...of loop or the forEach() method as shown below:
+
+// `for...of` loop
+for (const [key, value] of Object.entries(animals)) {
+    console.log(`${key}: ${value}`);
+}
+
+// `forEach()` method
+
+Object.entries(animals).forEach(([key, value]) => {
+    console.log(`${key}: ${value}`)
+});
